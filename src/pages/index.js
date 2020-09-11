@@ -1,41 +1,44 @@
-import React from "react"
-import * as firebase from "firebase/app"
-import "firebase/analytics"
-import "firebase/database"
+import React, { useState } from "react"
+import firebase from "gatsby-plugin-firebase"
 import { FirebaseDatabaseProvider, FirebaseDatabaseNode } from "@react-firebase/database"
+import TextField from '@material-ui/core/TextField'
+import Autocomplete from '@material-ui/lab/Autocomplete'
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBaEnpAJS4j3nAmhirc-mAptMATy-5wUy8",
-  authDomain: "mitonaro-f6796.firebaseapp.com",
-  databaseURL: "https://mitonaro-f6796.firebaseio.com",
-  projectId: "mitonaro-f6796",
-  storageBucket: "mitonaro-f6796.appspot.com",
-  messagingSenderId: "247161612247",
-  appId: "1:247161612247:web:02bd008c034d69d11b0d92",
-  measurementId: "G-VV2ZHD36RM"
+function QuotesSearch(props) {
+  const [searchTerms, setSearchTerms] = useState('')
+  const [showResults, setShowResults] = useState(false)
+  const quotes = props.quotes || []
+  const onSubmit = e => {
+    e.preventDefault()
+    setShowResults(true)
+  }
+  const onChange = e => {
+    setSearchTerms(e.target.value)
+    if (searchTerms.length > 3) setShowResults(true)
+    else setShowResults(false)
+  }
+  return (
+    <form onSubmit={onSubmit}>
+      <Autocomplete
+        id="search"
+        options={[...new Set(quotes.map((q) => q.labels).flat())]}
+        style={{ width: 300 }}
+        freeSolo
+        renderInput={(params) =>
+            <TextField {...params} label="Buscar..." value={searchTerms} onChange={onChange} variant="filled" />
+        } />
+      {(showResults) ? quotes.filter(q => q.value.includes(searchTerms) || q.labels.find(l => l.includes(searchTerms))).map((q, i) => <p key={i}>{q.value}</p>) : ''}
+    </form>
+  )
 }
-
-firebase.initializeApp(firebaseConfig)
-firebase.analytics()
 
 export default function Home() {
   return (
-    <FirebaseDatabaseProvider firebase={firebase} {...firebaseConfig} >
-      <div>Hello world!
+    <FirebaseDatabaseProvider firebase={firebase}>
+      <div>
         <FirebaseDatabaseNode
-          path="quotes/"
-          limitToFirst={3}>
-          {data => {
-            const quotes = data.value
-            if (quotes === null || typeof quotes === "undefined") return null
-            return (
-              <React.Fragment>
-                {
-                  quotes.map(q => <p>{q.value}</p>)
-                }
-              </React.Fragment>
-            );
-          }}
+          path="quotes/">
+          {data => <QuotesSearch quotes={data.value}/>}
         </FirebaseDatabaseNode>
       </div>
     </FirebaseDatabaseProvider>
