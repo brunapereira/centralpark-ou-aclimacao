@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import firebase from "gatsby-plugin-firebase"
 import { FirebaseDatabaseProvider, FirebaseDatabaseNode } from "@react-firebase/database"
 import TextField from '@material-ui/core/TextField'
-import Autocomplete from '@material-ui/lab/Autocomplete'
 import bozoGif from '../../static/mitonaro.gif'
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -34,14 +33,7 @@ function QuotesSearch(props) {
   }
   return (
     <form onSubmit={onSubmit} className={useStyles().root}>
-      <Autocomplete
-        id="search"
-        options={[...new Set(quotes.map((q) => q.labels).flat())]}
-        style={{ width: 300 }}
-        freeSolo
-        renderInput={(params) =>
-            <TextField {...params} label="Buscar..." value={searchTerms} onChange={onChange} variant="filled" />
-        } />
+      <TextField label="Buscar..." value={searchTerms} onChange={onChange} variant="filled" />
       {(showResults) ? quotes.filter(q => q.value.includes(searchTerms) || q.labels.find(l => l.includes(searchTerms))).map((q, i) => <p key={i}>{q.value}</p>) : ''}
     </form>
   )
