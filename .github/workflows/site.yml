@@ -28,4 +28,4 @@ jobs:
         
     - name: Deploy
       run: npm run deploy
-      if: github.event == 'push'
+      if: github.event_name == 'push'
