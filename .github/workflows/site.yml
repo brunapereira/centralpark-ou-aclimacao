@@ -26,6 +26,14 @@ jobs:
         npm install
         npm test
         
-    - name: Deploy
-      run: npm run deploy
+    - name: Prepare deploy
+      run: npm run prepare
       if: github.event_name == 'push'
+
+    - name: Deploy
+      uses: actions-x/commit@v2
+      if: github.event_name == 'push'
+      with:
+        branch: gh-pages
+        files: public
+        message: Release $(git log '--format=format:%H' master -1)
