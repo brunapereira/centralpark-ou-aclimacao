@@ -26,14 +26,13 @@ jobs:
         npm install
         npm test
         
-    - name: Prepare deploy
-      run: npm run prepare
-      if: github.event_name == 'push'
+    - name: Package
+      run: npm run build
 
     - name: Deploy
-      uses: actions-x/commit@v2
+      uses: Cecilapp/GitHub-Pages-deploy@master
       if: github.event_name == 'push'
-      with:
-        branch: gh-pages
-        files: public
-        message: Release $(git log '--format=format:%H' master -1)
+      env:
+        EMAIL: arnaud@ligny.org
+        GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BUILD_DIR: public
