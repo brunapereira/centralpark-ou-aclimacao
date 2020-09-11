@@ -3,6 +3,21 @@ import firebase from "gatsby-plugin-firebase"
 import { FirebaseDatabaseProvider, FirebaseDatabaseNode } from "@react-firebase/database"
 import TextField from '@material-ui/core/TextField'
 import Autocomplete from '@material-ui/lab/Autocomplete'
+import bozoGif from '../../static/mitonaro.gif'
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles({
+  root: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    fontFamily: 'OCR A Std, monospace'
+  },
+  img: {
+    marginTop: '60px'
+  }
+})
 
 function QuotesSearch(props) {
   const [searchTerms, setSearchTerms] = useState('')
@@ -18,7 +33,7 @@ function QuotesSearch(props) {
     else setShowResults(false)
   }
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className={useStyles().root}>
       <Autocomplete
         id="search"
         options={[...new Set(quotes.map((q) => q.labels).flat())]}
@@ -34,13 +49,16 @@ function QuotesSearch(props) {
 
 export default function Home() {
   return (
-    <FirebaseDatabaseProvider firebase={firebase}>
-      <div>
-        <FirebaseDatabaseNode
-          path="quotes/">
-          {data => <QuotesSearch quotes={data.value}/>}
-        </FirebaseDatabaseNode>
-      </div>
-    </FirebaseDatabaseProvider>
+    <div className={useStyles().root}>
+      <img src={bozoGif} alt="Bozo" className={useStyles().img} />
+      <h1>Mitonaro</h1>
+      <FirebaseDatabaseProvider firebase={firebase}>
+        <div>
+          <FirebaseDatabaseNode path="quotes/">
+            {data => <QuotesSearch quotes={data.value}/>}
+          </FirebaseDatabaseNode>
+        </div>
+      </FirebaseDatabaseProvider>
+  </div>
   )
 }
