@@ -11,7 +11,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "ci-deploy": "git config --global user.name \"github-actions[bot]\" && git --config --global user.email \"github-actions[bot]@users.noreply.github.com\" && npm run deploy",
+    "ci-deploy": "git config --global user.name \"github-actions[bot]\" && git config --global user.email \"github-actions[bot]@users.noreply.github.com\" && npm run deploy",
     "deploy": "npm run clean && git worktree add -B gh-pages -f public && npm run build && (cd public; git add .) && (cd public; git commit -m \"Release $(git log '--format=format:%H' master -1)\") && git push origin gh-pages"
   },
   "dependencies": {
