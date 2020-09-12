@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import firebase from "gatsby-plugin-firebase"
-import { FirebaseDatabaseProvider, FirebaseDatabaseNode } from "@react-firebase/database"
 import TextField from '@material-ui/core/TextField'
 import bozoGif from '../../static/mitonaro.gif'
 import { makeStyles } from '@material-ui/core/styles'
+import { useListVals } from "react-firebase-hooks/database"
 
 const useStyles = makeStyles({
   root: {
@@ -21,25 +21,36 @@ const useStyles = makeStyles({
   }
 })
 
-function QuotesSearch(props) {
+function QuotesResults(props) {
+  const [snapshot, isLoading, error] = useListVals(firebase.database().ref("/quotes"))
+  return (
+    <div>
+      {error && <strong>Erro: {error}</strong>}
+      {isLoading && <span>Buscando...</span>}
+      {(!isLoading && snapshot) &&
+          snapshot.filter(q => q.value.includes(props.searchTerms) || q.labels.find(l => l.includes(props.searchTerms))).map((q, i) => <p key={i}>{q.value}</p>)}
+    </div>
+  )
+}
+
+function QuotesSearch() {
   const [searchTerms, setSearchTerms] = useState('')
   const [showResults, setShowResults] = useState(false)
-  const quotes = props.quotes || []
+
   const onSubmit = e => {
     e.preventDefault()
     setShowResults(true)
   }
-  const onChange = e => {
-    setSearchTerms(e.target.value)
-    if (searchTerms.length > 3) setShowResults(true)
-    else setShowResults(false)
-  }
+  const onChange = e => setSearchTerms(e.target.value)
+
   return (
-    <form onSubmit={onSubmit} className={useStyles().root}>
-      <TextField label="Buscar..." value={searchTerms} onChange={onChange} variant="filled" />
-      {(showResults) ? quotes.filter(q => q.value.includes(searchTerms) || q.labels.find(l => l.includes(searchTerms))).map((q, i) => <p key={i}>{q.value}</p>) : ''}
-      <input type="submit" className={useStyles().invisibleSubmit} />
-    </form>
+    <div>
+      <form onSubmit={onSubmit} className={useStyles().root}>
+        <TextField label="Buscar..." value={searchTerms} onChange={onChange} variant="filled" />
+        <input type="submit" className={useStyles().invisibleSubmit} />
+      </form>
+      {showResults && <QuotesResults searchTerms={searchTerms}/>}
+    </div>
   )
 }
 
@@ -48,13 +59,7 @@ export default function Home() {
     <div className={useStyles().root}>
       <img src={bozoGif} alt="Bozo" className={useStyles().img} />
       <h1>Mitonaro</h1>
-      <FirebaseDatabaseProvider firebase={firebase}>
-        <div>
-          <FirebaseDatabaseNode path="quotes/">
-            {data => <QuotesSearch quotes={data.value}/>}
-          </FirebaseDatabaseNode>
-        </div>
-      </FirebaseDatabaseProvider>
+      <QuotesSearch />
   </div>
   )
 }
