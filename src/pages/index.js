@@ -15,6 +15,9 @@ const useStyles = makeStyles({
   },
   img: {
     marginTop: '60px'
+  },
+  invisibleSubmit: {
+    visibility: 'hidden'
   }
 })
 
@@ -35,6 +38,7 @@ function QuotesSearch(props) {
     <form onSubmit={onSubmit} className={useStyles().root}>
       <TextField label="Buscar..." value={searchTerms} onChange={onChange} variant="filled" />
       {(showResults) ? quotes.filter(q => q.value.includes(searchTerms) || q.labels.find(l => l.includes(searchTerms))).map((q, i) => <p key={i}>{q.value}</p>) : ''}
+      <input type="submit" className={useStyles().invisibleSubmit} />
     </form>
   )
 }
