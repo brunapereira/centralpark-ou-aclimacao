@@ -26,13 +26,5 @@ jobs:
         npm install
         npm test
         
-    - name: Package
-      run: npm run build
-
     - name: Deploy
-      uses: Cecilapp/GitHub-Pages-deploy@master
-      if: github.event_name == 'push'
-      env:
-        EMAIL: arnaud@ligny.org
-        GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BUILD_DIR: public
+      run: npm run ci-deploy
