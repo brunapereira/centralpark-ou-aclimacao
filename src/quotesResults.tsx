@@ -45,7 +45,8 @@ function QuotesList(props) {
          .sort((a, b) => a.score - b.score)
          .map((q, i) => 
            <blockquote key={i} className={useStyles().blockquote}>
-             {q.item.value} <small><a href={q.item.source}>Fonte</a></small>
+             {q.item.value} 
+             {q.item.source && <small><a href={q.item.source}>Fonte</a></small>}
            </blockquote>
          )}
       {!quotes.length && searchTerms && <span>Sua busca não teve resultados</span>}
