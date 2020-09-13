@@ -1,7 +1,17 @@
 import React from "react"
 import firebase from "gatsby-plugin-firebase"
 import { useListVals } from "react-firebase-hooks/database"
+import { makeStyles } from '@material-ui/core/styles'
 import Fuse from 'fuse.js'
+
+const useStyles = makeStyles({
+  blockquote: {
+    textAlign: 'justify',
+    background: '#ededed',
+    borderLeft: '10px solid #ccc',
+    padding: '.5em 10px',
+  },
+})
 
 interface QuoteRecord {
   value: string;
@@ -18,7 +28,9 @@ function QuotesList(props) {
          .filter(q => q.score < 0.6)
          .sort((a, b) => a.score - b.score)
          .map((q, i) => 
-           <p key={i}>{q.item.value} <a href={q.item.source}>Fonte</a></p>
+           <blockquote key={i} className={useStyles().blockquote}>
+             {q.item.value} <a href={q.item.source}>Fonte</a>
+           </blockquote>
          )}
       {!quotes.length ? <span>Sua busca não teve resultados</span> : ''}
     </div>
