@@ -6,7 +6,6 @@ import Fuse from 'fuse.js'
 
 const useStyles = makeStyles({
   blockquote: {
-    textAlign: 'justify',
     background: '#ededed',
     borderLeft: '10px solid #ccc',
     padding: '.5em 10px',
@@ -14,10 +13,15 @@ const useStyles = makeStyles({
     '&:before': {
       color: '#ccc',
       content: 'open-quote',
-      fontSize: '4em',
+      fontSize: '3em',
       lineHeight: '.1em',
       marginRight: '.25em',
-      verticalAlign: '-.4em',
+      verticalAlign: '-.3em',
+    },
+    '& small': {
+      textAlign: 'right',
+      display: 'inline-block',
+      width: '100%'
     }
   },
 })
@@ -38,7 +42,7 @@ function QuotesList(props) {
          .sort((a, b) => a.score - b.score)
          .map((q, i) => 
            <blockquote key={i} className={useStyles().blockquote}>
-             {q.item.value} <a href={q.item.source}>Fonte</a>
+             {q.item.value} <small><a href={q.item.source}>Fonte</a></small>
            </blockquote>
          )}
       {!quotes.length ? <span>Sua busca não teve resultados</span> : ''}
