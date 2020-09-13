@@ -41,6 +41,16 @@ describe("QuotesResults", () => {
     expect(component.text()).not.toContain("Segunda frase")
   })
 
+  it("renders source", () => {
+    mockUseListVals.mockReturnValue([[
+      {value: 'Primeira frase', labels: ['familia'], source: "link"},
+    ], false, false])
+
+    const QuotesResults = require('./quotesResults').default
+    const component = mount(<QuotesResults searchTerms="Primeira" />)
+    expect(component.find('a').html()).toEqual("<a href=\"link\">Fonte</a>")
+  })
+
   it("renders error", () => {
     mockUseListVals.mockReturnValue([false, false, "Some error"])
 

@@ -17,7 +17,9 @@ function QuotesList(props) {
       {quotes
          .filter(q => q.score < 0.6)
          .sort((a, b) => a.score - b.score)
-         .map((q, i) => <p key={i}>{q.item.value}</p>)}
+         .map((q, i) => 
+           <p key={i}>{q.item.value} <a href={q.item.source}>Fonte</a></p>
+         )}
       {!quotes.length ? <span>Sua busca não teve resultados</span> : ''}
     </div>
   )
