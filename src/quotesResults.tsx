@@ -61,8 +61,9 @@ function QuotesList(props) {
 }
 
 export default function QuotesResults(props) {
+  const isSSR = typeof window === 'undefined'
   const { searchTerms } = props
-  const [snapshot, isLoading, error] = useListVals<QuoteRecord>(firebase.database().ref("/quotes"))
+  const [snapshot, isLoading, error] = isSSR ? [] : useListVals<QuoteRecord>(firebase.database().ref("/quotes"))
   const options = {
     includeScore: true, 
     ignoreLocation: true,

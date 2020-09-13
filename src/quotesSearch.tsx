@@ -3,8 +3,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
 import QuotesResults from './quotesResults'
 
-if (typeof window == 'undefined') global.window = { location: {}}
-
 const useStyles = makeStyles({
   root: {
     display: 'flex',
@@ -18,11 +16,14 @@ const useStyles = makeStyles({
 })
 
 export default function QuotesSearch() {
-  const searchParam = new URLSearchParams(window.location.search).get('busca')
+  const isSSR = typeof window === 'undefined'
+  const searchParam = !isSSR && new URLSearchParams(window.location.search).get('busca')
   const [searchTerms, setSearchTerms] = useState(searchParam || '')
 
   const onSubmit = e => {
     e.preventDefault()
+    if (isSSR) return
+
     const url = new URL(window.location)
     url.searchParams.set('busca', searchTerms)
     window.location.href = url.href
