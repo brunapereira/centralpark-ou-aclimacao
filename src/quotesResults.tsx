@@ -10,6 +10,15 @@ const useStyles = makeStyles({
     background: '#ededed',
     borderLeft: '10px solid #ccc',
     padding: '.5em 10px',
+    maxWidth: '600px',
+    '&:before': {
+      color: '#ccc',
+      content: 'open-quote',
+      fontSize: '4em',
+      lineHeight: '.1em',
+      marginRight: '.25em',
+      verticalAlign: '-.4em',
+    }
   },
 })
 
