@@ -16,14 +16,18 @@ const useStyles = makeStyles({
 })
 
 export default function QuotesSearch() {
-  const [searchTerms, setSearchTerms] = useState('')
-  const [showResults, setShowResults] = useState(false)
+  const searchParam = new URLSearchParams(window.location.search).get('busca')
+  const [searchTerms, setSearchTerms] = useState(searchParam || '')
 
   const onSubmit = e => {
     e.preventDefault()
-    setShowResults(true)
+    const url = new URL(window.location)
+    url.searchParams.set('busca', searchTerms)
+    window.location.href = url.href
   }
-  const onChange = e => setSearchTerms(e.target.value)
+  const onChange = e => {
+    setSearchTerms(e.target.value)
+  }
 
   return (
     <div>
@@ -31,7 +35,7 @@ export default function QuotesSearch() {
         <TextField label="Buscar..." value={searchTerms} onChange={onChange} variant="filled" />
         <input type="submit" className={useStyles().invisibleSubmit} />
       </form>
-      {showResults && <QuotesResults searchTerms={searchTerms}/>}
+      <QuotesResults searchTerms={searchParam} />
     </div>
   )
 }

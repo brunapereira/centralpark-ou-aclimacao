@@ -13,8 +13,19 @@ describe("QuotesResults", () => {
   it("renders a loading message", () => {
     mockUseListVals.mockReturnValue([false, true, false])
     const QuotesResults = require('./quotesResults').default
-    const component = shallow(<QuotesResults />)
+    const component = shallow(<QuotesResults searchTerms="11" />)
     expect(component.text()).toContain("Buscando")
+  })
+
+  it("renders a list of suggestions when no search", () => {
+    mockUseListVals.mockReturnValue([[
+      {value: 'Primeira frase', labels: ['familia']},
+      {value: 'Segunda frase', labels: ['familia']},
+    ], false, false])
+
+    const QuotesResults = require('./quotesResults').default
+    const component = mount(<QuotesResults />)
+    expect(component.text()).toContain("Veja o que Bozo tem a dizer sobre: familia")
   })
 
   it("renders filtered list by sentence", () => {
@@ -49,6 +60,17 @@ describe("QuotesResults", () => {
     const QuotesResults = require('./quotesResults').default
     const component = mount(<QuotesResults searchTerms="Primeira" />)
     expect(component.find('a').html()).toEqual("<a href=\"link\">Fonte</a>")
+  })
+
+  it("renders no results", () => {
+    mockUseListVals.mockReturnValue([[
+      {value: 'Primeira frase', labels: ['familia'], source: "link"},
+    ], false, false])
+
+    const QuotesResults = require('./quotesResults').default
+    const component = mount(<QuotesResults searchTerms="Segunda" />)
+    expect(component.text()).toContain("Sua busca não teve resultados")
+    expect(component.text()).toContain("Veja o que Bozo tem a dizer sobre: familia")
   })
 
   it("renders error", () => {

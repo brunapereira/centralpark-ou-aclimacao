@@ -5,11 +5,14 @@ import { makeStyles } from '@material-ui/core/styles'
 import Fuse from 'fuse.js'
 
 const useStyles = makeStyles({
+  quotesList: {
+    maxWidth: '600px',
+    margin: '30px 0'
+  },
   blockquote: {
     background: '#ededed',
     borderLeft: '10px solid #ccc',
     padding: '.5em 10px',
-    maxWidth: '600px',
     '&:before': {
       color: '#ccc',
       content: 'open-quote',
@@ -33,26 +36,33 @@ interface QuoteRecord {
 }
 
 function QuotesList(props) {
-  const { quotes } = props
+  const quotes = (props.quotes || []).filter(q => q.score < 0.6)
+  const { searchTerms, labels } = props
 
   return (
-    <div>
+    <div className={useStyles().quotesList}>
       {quotes
-         .filter(q => q.score < 0.6)
          .sort((a, b) => a.score - b.score)
          .map((q, i) => 
            <blockquote key={i} className={useStyles().blockquote}>
              {q.item.value} <small><a href={q.item.source}>Fonte</a></small>
            </blockquote>
          )}
-      {!quotes.length ? <span>Sua busca não teve resultados</span> : ''}
+      {!quotes.length && searchTerms && <span>Sua busca não teve resultados</span>}
+      {!quotes.length &&
+        <p>Veja o que Bozo tem a dizer sobre:  
+          {labels.map((l, i) => 
+            <span key={i}>{i > 0 && ","} <a href={`?busca=${l}`}>{l}</a></span>)}
+        </p>
+       }
     </div>
   )
 }
 
 export default function QuotesResults(props) {
+  const { searchTerms } = props
   const [snapshot, isLoading, error] = useListVals<QuoteRecord>(firebase.database().ref("/quotes"))
-  const searchOptions = {
+  const options = {
     includeScore: true, 
     ignoreLocation: true,
     keys: ['value', { name: 'labels', weight: 0.3 }]
@@ -61,12 +71,12 @@ export default function QuotesResults(props) {
   return (
     <div>
       {error && <strong>Erro: {error}</strong>}
-      {isLoading && <span>Buscando...</span>}
-      {
-        (!isLoading && snapshot) &&
-          <QuotesList quotes={
-            new Fuse(snapshot, searchOptions).search(props.searchTerms) } />
-      }
+      {isLoading && searchTerms && <span>Buscando...</span>}
+      {(!isLoading && snapshot) &&
+        <QuotesList 
+          searchTerms={searchTerms}
+          labels={[...new Set(snapshot.map(s => s.labels).flat())]}
+          quotes={searchTerms && new Fuse(snapshot, options).search(searchTerms) } />}
     </div>
   )
 }
