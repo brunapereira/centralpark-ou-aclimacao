@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
 import QuotesResults from './quotesResults'
 
+if (typeof window == 'undefined') global.window = { location: {}}
+
 const useStyles = makeStyles({
   root: {
     display: 'flex',
