@@ -5645,6 +5645,12 @@ gatsby-plugin-page-creator@^2.3.26:
     lodash "^4.17.20"
     slugify "^1.4.4"
 
+gatsby-plugin-react-helmet@^3.3.11:
+  version "3.3.11"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-react-helmet/-/gatsby-plugin-react-helmet-3.3.11.tgz#f49d31abfc5e4b31e81226d82b7b5e9c1b71f797"
+  dependencies:
+    "@babel/runtime" "^7.11.2"
+
 gatsby-plugin-sitemap@^2.4.13:
   version "2.4.13"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-sitemap/-/gatsby-plugin-sitemap-2.4.13.tgz#b73795679c6056ea6fa535ae7af51f82db522734"
@@ -9940,6 +9946,10 @@ react-fast-compare@^2.0.1:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
 
+react-fast-compare@^3.1.1:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.0.tgz#641a9da81b6a6320f270e89724fb45a0b39e43bb"
+
 react-firebase-hooks@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/react-firebase-hooks/-/react-firebase-hooks-2.2.0.tgz#a2cea46d3da94619e8a316b85173638698ef7d2b"
@@ -9954,6 +9964,15 @@ react-focus-lock@^2.3.1:
     react-clientside-effect "^1.2.2"
     use-callback-ref "^1.2.1"
     use-sidecar "^1.0.1"
+
+react-helmet@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-6.1.0.tgz#a750d5165cb13cf213e44747502652e794468726"
+  dependencies:
+    object-assign "^4.1.1"
+    prop-types "^15.7.2"
+    react-fast-compare "^3.1.1"
+    react-side-effect "^2.1.0"
 
 react-hot-loader@^4.12.21:
   version "4.12.21"
@@ -10020,6 +10039,10 @@ react-remove-scroll@^2.3.0:
     tslib "^1.0.0"
     use-callback-ref "^1.2.3"
     use-sidecar "^1.0.1"
+
+react-side-effect@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-2.1.0.tgz#1ce4a8b4445168c487ed24dab886421f74d380d3"
 
 react-style-singleton@^2.1.0:
   version "2.1.0"

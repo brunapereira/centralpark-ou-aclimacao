@@ -6,10 +6,13 @@
 
 module.exports = {
   siteMetadata: {
-      siteUrl: `https://mitonaro.github.io`,
+    siteUrl: `https://mitonaro.github.io`,
+    title: `Mitonaro`,
+    description: `Arquivo de frases inéditas de Bozo`,
   },
 	plugins: [
     `gatsby-plugin-sitemap`,
+    `gatsby-plugin-react-helmet`,
 		{
 			resolve: "gatsby-plugin-firebase",
 			options: {

@@ -2,6 +2,7 @@ import React from "react"
 import bozoGif from '../../static/mitonaro.gif'
 import { makeStyles } from '@material-ui/core/styles'
 import QuotesSearch from '../quotesSearch'
+import SEO from '../seo'
 
 const useStyles = makeStyles({
   root: {
@@ -28,10 +29,11 @@ const useStyles = makeStyles({
 export default function Home() {
   return (
     <div className={useStyles().root}>
+      <SEO />
       <img src={bozoGif} alt="Bozo" className={useStyles().img} />
       <h1>Mitonaro</h1>
       <QuotesSearch />
       <footer>Baseado em <a href="www.tronalddump.io">www.tronalddump.io</a></footer>
-  </div>
+    </div>
   )
 }
