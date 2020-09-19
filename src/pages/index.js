@@ -36,7 +36,7 @@ const useStyles = makeStyles({
 export default function Home() {
   return (
     <div className={useStyles().root}>
-      <SEO />
+      <SEO title="Início" />
       <div className={useStyles().titleSection}>
         <img src={bozoGif} alt="Bozo" className={useStyles().img} />
         <h1>Mitonaro</h1>
