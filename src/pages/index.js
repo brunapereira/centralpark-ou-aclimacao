@@ -21,8 +21,15 @@ const useStyles = makeStyles({
       fontSize: '12px'
     }
   },
-  img: {
-    marginTop: '60px'
+  titleSection: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    margin: '30px 0',
+    '& h1': { margin: '10px' },
+    '& p': { margin: '0' },
+    '& img': { margin: '40px' }
   }
 })
 
@@ -30,8 +37,11 @@ export default function Home() {
   return (
     <div className={useStyles().root}>
       <SEO />
-      <img src={bozoGif} alt="Bozo" className={useStyles().img} />
-      <h1>Mitonaro</h1>
+      <div className={useStyles().titleSection}>
+        <img src={bozoGif} alt="Bozo" className={useStyles().img} />
+        <h1>Mitonaro</h1>
+        <p>Arquivo de frases inéditas de Bozo</p>
+      </div>
       <QuotesSearch />
       <footer>Baseado em <a href="www.tronalddump.io">www.tronalddump.io</a></footer>
     </div>
