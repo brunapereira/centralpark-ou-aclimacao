@@ -5,8 +5,11 @@
  */
 
 module.exports = {
-  /* Your site config here */
+  siteMetadata: {
+      siteUrl: `https://mitonaro.github.io`,
+  },
 	plugins: [
+    `gatsby-plugin-sitemap`,
 		{
 			resolve: "gatsby-plugin-firebase",
 			options: {
