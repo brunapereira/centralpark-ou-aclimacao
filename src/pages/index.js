@@ -39,7 +39,7 @@ export default function Home() {
       <SEO title="Início" />
       <div className={useStyles().titleSection}>
         <img src={bozoGif} alt="Bozo" className={useStyles().img} />
-        <h1>Mitonaro</h1>
+        <h1>Bozonaro</h1>
         <p>Arquivo de frases inéditas de Bozo</p>
       </div>
       <QuotesSearch />
