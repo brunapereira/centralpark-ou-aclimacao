@@ -6,8 +6,8 @@
 
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://mitonaro.github.io`,
-    title: `Mitonaro`,
+    siteUrl: `https://bozonaro.web.app`,
+    title: `Bozonaro`,
     description: `Arquivo de frases inéditas de Bozo`,
   },
 	plugins: [

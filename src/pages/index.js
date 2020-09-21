@@ -1,5 +1,5 @@
 import React from "react"
-import bozoGif from '../../static/mitonaro.gif'
+import bozoGif from '../../static/bozonaro.gif'
 import { makeStyles } from '@material-ui/core/styles'
 import QuotesSearch from '../quotesSearch'
 import SEO from '../seo'
