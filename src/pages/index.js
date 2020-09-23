@@ -43,7 +43,7 @@ export default function Home() {
         <p>Arquivo de frases inéditas de Bozo</p>
       </div>
       <QuotesSearch />
-      <footer>Baseado em <a href="www.tronalddump.io">www.tronalddump.io</a></footer>
+      <footer>Baseado em <a target="_blank" href="https://www.tronalddump.io" rel="noreferrer">www.tronalddump.io</a></footer>
     </div>
   )
 }
