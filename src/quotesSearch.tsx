@@ -35,7 +35,7 @@ export default function QuotesSearch() {
   return (
     <div>
       <form onSubmit={onSubmit} className={useStyles().root}>
-        <TextField label="Buscar..." value={searchTerms} onChange={onChange} variant="filled" autoFocus />
+        <TextField label="Buscar..." defaultValue={searchParam} value={searchTerms} onChange={onChange} variant="filled" autoFocus />
         <input type="submit" className={useStyles().invisibleSubmit} />
       </form>
       <QuotesResults searchTerms={searchParam} />
