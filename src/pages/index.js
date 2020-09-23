@@ -11,15 +11,8 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     flexDirection: 'column',
     fontFamily: 'OCR A Std, monospace',
-    '& footer': {
-      position: 'fixed',
-      width: '100%',
-      textAlign: 'center',
-      background: '#f9f9f9',
-      bottom: '0',
-      lineHeight: '2em',
-      fontSize: '12px'
-    }
+    position: 'relative',
+    minHeight: '100vh',
   },
   titleSection: {
     display: 'flex',
@@ -30,6 +23,15 @@ const useStyles = makeStyles({
     '& h1': { margin: '10px' },
     '& p': { margin: '0' },
     '& img': { margin: '40px' }
+  },
+  footer: {
+    position: 'absolute',
+    textAlign: 'center',
+    bottom: '0',
+    height: '2.5em',
+    lineHeight: '1.4em',
+    fontSize: '12px',
+    marginRight: '10px'
   }
 })
 
@@ -43,7 +45,10 @@ export default function Home() {
         <p>Arquivo de frases inéditas de Bozo</p>
       </div>
       <QuotesSearch />
-      <footer>Baseado em <a target="_blank" href="https://www.tronalddump.io" rel="noreferrer">www.tronalddump.io</a></footer>
+      <footer className={useStyles().footer}>
+        <div>Quer contribuir ou sugerir frases? Vem pro nosso <a target="_blank" rel="noreferrer" href="https://github.com/bozonaro-web-app">github</a></div>
+        <div>Baseado em <a target="_blank" href="https://www.tronalddump.io" rel="noreferrer">www.tronalddump.io</a></div>
+      </footer>
     </div>
   )
 }

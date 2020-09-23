@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField'
 import QuotesResults from './quotesResults'
 
 const useStyles = makeStyles({
-  root: {
+  quotesSearch: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -34,7 +34,7 @@ export default function QuotesSearch() {
 
   return (
     <div>
-      <form onSubmit={onSubmit} className={useStyles().root}>
+      <form onSubmit={onSubmit} className={useStyles().quotesSearch}>
         <TextField label="Buscar..." defaultValue={searchParam} value={searchTerms} onChange={onChange} variant="filled" autoFocus />
         <input type="submit" className={useStyles().invisibleSubmit} />
       </form>

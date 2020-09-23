@@ -7,7 +7,8 @@ import Fuse from 'fuse.js'
 const useStyles = makeStyles({
   quotesList: {
     maxWidth: '600px',
-    margin: '30px 0'
+    margin: '30px 0',
+    paddingBottom: '2.5em'
   },
   blockquote: {
     background: '#ededed',
