@@ -6,3 +6,69 @@ body {
   min-height: 100%;
   position: relative;
 }
+
+#root {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: OCR A Std, monospace;
+  position: relative;
+  min-height: 100vh;
+}
+
+#titleSection {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 30px 0;
+}
+#titleSection h1 { margin: 10px; }
+#titleSection p { margin: 0; }
+#titleSection img { margin: 40px; }
+
+footer {
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+  height: 2.5em;
+  line-height: 1.4em;
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+#quotesSearch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.invisibleSubmit {
+  visibility: hidden;
+}
+
+#quotesList {
+  max-width: 600px;
+  margin: 30px 0;
+  padding-bottom: 2.5em;
+}
+
+.blockquote {
+  background: #ededed;
+  border-left: 10px solid #ccc;
+  padding: .5em 10px;
+}
+.blockquote::before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 3em;
+  line-height: .1em;
+  margin-right: .25em;
+  vertical-align: -.3em;
+}
+.blockquote small {
+  text-align: right;
+  display: inline-block;
+  width: 100%;
+}
+

@@ -1,34 +1,7 @@
 import React from "react"
 import firebase from "gatsby-plugin-firebase"
 import { useListVals } from "react-firebase-hooks/database"
-import { makeStyles } from '@material-ui/core/styles'
 import Fuse from 'fuse.js'
-
-const useStyles = makeStyles({
-  quotesList: {
-    maxWidth: '600px',
-    margin: '30px 0',
-    paddingBottom: '2.5em'
-  },
-  blockquote: {
-    background: '#ededed',
-    borderLeft: '10px solid #ccc',
-    padding: '.5em 10px',
-    '&:before': {
-      color: '#ccc',
-      content: 'open-quote',
-      fontSize: '3em',
-      lineHeight: '.1em',
-      marginRight: '.25em',
-      verticalAlign: '-.3em',
-    },
-    '& small': {
-      textAlign: 'right',
-      display: 'inline-block',
-      width: '100%'
-    }
-  },
-})
 
 interface QuoteRecord {
   value: string;
@@ -41,11 +14,11 @@ function QuotesList(props) {
   const { searchTerms, labels } = props
 
   return (
-    <div className={useStyles().quotesList}>
+    <div id="quotesList">
       {quotes
          .sort((a, b) => a.score - b.score)
          .map((q, i) => 
-           <blockquote key={i} className={useStyles().blockquote}>
+           <blockquote key={i} className="blockquote">
              {q.item.value} 
              {q.item.source && <small><a href={q.item.source}>Fonte</a></small>}
            </blockquote>
