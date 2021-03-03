@@ -1,10 +1,13 @@
 html, body {
   background-color: #f9f9f9;
-  height: 100%;
 }
+
 body {
-  min-height: 100%;
-  position: relative;
+  box-sizing: border-box;
+  font-family: OCR A Std, monospace;
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(#014386, 50%, #FFFFFF 50%);
 }
 
 #root {
@@ -16,59 +19,47 @@ body {
   min-height: 100vh;
 }
 
-#titleSection {
+#main {
+  background-color: #fff;
+  border: 1px solid black;
+  box-shadow: 0px 0px 3px 1px #0f0f0f;
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: 30px 0;
-}
-#titleSection h1 { margin: 10px; }
-#titleSection p { margin: 0; }
-#titleSection img { margin: 40px; }
-
-footer {
-  position: absolute;
-  text-align: center;
-  bottom: 0;
-  height: 2.5em;
-  line-height: 1.4em;
-  font-size: 12px;
-  margin-right: 10px;
-}
-
-#quotesSearch {
-  display: flex;
-  align-items: center;
   justify-content: center;
+  margin: 180px 0;
+
+  width: 50%;
+  height: 70vh;
+
+}
+
+.title {
+  padding: 25px;
+  border-radius: 5px;
+  background: url('../../static/home.jpg');
+  background-size: cover;
+  opacity: .8;
+  background-repeat: no-repeat;
+  width: 60%;
+  height: 60%;
+  
+  display: flex;
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
+
+  font-size: 34px;
+  color: #fff; 
 }
 
-.invisibleSubmit {
-  visibility: hidden;
+.startButton {
+  cursor: pointer;
+  border: none;
+  width: 144px;
+  height: 44px;
+  font-size: 16px;
+  background-color: #bbe47f;
+  border-radius: 5px;
+  margin-top: 25px;
 }
-
-#quotesList {
-  max-width: 600px;
-  margin: 30px 0;
-  padding-bottom: 2.5em;
-}
-
-.blockquote {
-  background: #ededed;
-  border-left: 10px solid #ccc;
-  padding: .5em 10px;
-}
-.blockquote::before {
-  color: #ccc;
-  content: open-quote;
-  font-size: 3em;
-  line-height: .1em;
-  margin-right: .25em;
-  vertical-align: -.3em;
-}
-.blockquote small {
-  text-align: right;
-  display: inline-block;
-  width: 100%;
-}
-
