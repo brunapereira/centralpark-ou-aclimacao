@@ -6,9 +6,9 @@
 
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://bozonaro.web.app`,
-    title: `Bozonaro`,
-    description: `Arquivo de frases inéditas de Bozo`,
+    siteUrl: `https://centralpark-ou-aclimacao.web.app`,
+    title: `CentralPark ou Aclimação`,
+    description: `Quiz - As imagens são do CentralPark ou do Parque da Aclimação?`,
   },
 	plugins: [
     `gatsby-plugin-sitemap`,
@@ -17,14 +17,14 @@ module.exports = {
 			resolve: "gatsby-plugin-firebase",
 			options: {
 				credentials: {
-					apiKey: "AIzaSyBaEnpAJS4j3nAmhirc-mAptMATy-5wUy8",
-					authDomain: "mitonaro-f6796.firebaseapp.com",
-					databaseURL: "https://mitonaro-f6796.firebaseio.com",
-					projectId: "mitonaro-f6796",
-					storageBucket: "mitonaro-f6796.appspot.com",
-					messagingSenderId: "247161612247",
-					appId: "1:247161612247:web:02bd008c034d69d11b0d92",
-					measurementId: "G-VV2ZHD36RM"
+					apiKey: "AIzaSyDrBkKDBo4SXJmJazqRPjyWicI1rooVJKE",
+					authDomain: "centralpark-ou-aclimacao.firebaseapp.com",
+					databaseURL: "https://centralpark-ou-aclimacao-default-rtdb.firebaseio.com",
+					projectId: "centralpark-ou-aclimacao",
+					storageBucket: "centralpark-ou-aclimacao.appspot.com",
+					messagingSenderId: "967312803029",
+					appId: "1:967312803029:web:efef39f1c349bda568ce5c",
+					measurementId: "G-0RRT9E91L4"
 				}
 			}
 		}

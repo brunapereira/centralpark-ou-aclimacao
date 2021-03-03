@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "bozonaro",
+    "site": "centralpark-ou-aclimacao",
     "public": "public",
     "ignore": [
       "firebase.json",
