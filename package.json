@@ -10,7 +10,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "test-watch": "jest --watch",
     "ci-deploy": "npm run deploy -- --token $FIREBASE_TOKEN",
     "deploy": "npm run build && firebase deploy --only hosting:centralpark-ou-aclimacao"
