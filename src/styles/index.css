@@ -1,9 +1,10 @@
 body {
-  background: linear-gradient(#014386, 50%, #FFFFFF 50%);
+  background: linear-gradient(#014386, 70%, #FFFFFF 30%);
   box-sizing: border-box;
   font-family: OCR A Std, monospace;
   margin: 0;
   height: 100vh;
+  overflow-x: hidden;
 }
 
 #root {
@@ -81,6 +82,10 @@ body {
   width: 100%;
 }
 
+.result p, .currentStep, #main p {
+  color: #fff;
+}
+
 @media only screen and (min-width: 801px) {
   body {
     background: linear-gradient(#014386, 50%, #FFFFFF 50%);
@@ -102,5 +107,9 @@ body {
 
   .title {
     font-size: 34px;
+  }
+
+  .result p, .currentStep, #main p {
+    color: #000;
   }
 }
