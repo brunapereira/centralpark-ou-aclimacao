@@ -1,13 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import * as logic from '../logic/quiz'
 
 export default function Options(props) {
   const options = logic.options
   const currentOption = options[props.step - 1]
 
-  const [point, setPoint] = useState(0);
-
-  const selectOption = (e) => {
+const selectOption = (e) => {
     const selected = e.target.value
 
     if (currentOption.type === selected)
@@ -23,7 +21,7 @@ export default function Options(props) {
       </div>
 
       <div className="imageOptions">
-        <img src={currentOption.path}/>
+        <img src={currentOption.path} alt="currentOption"/>
       </div>
 
       <div className="buttonOptions">
