@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import registerResult from '../logic/registerResult'
 
 export default function Result(props) {
+  useEffect(() => {
+    registerResult(10, props.totalPoints)
+  })
+
   return (
     <>
       <p> Você acertou {props.totalPoints} de 10!</p>
