@@ -1,6 +1,6 @@
 import React from 'react'
 import SEO from '../seo'
-import home from '../../static/home.jpg'
+import { Link } from 'gatsby'
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
           <h2>Central Park <br/> ou Aclimação?</h2>
           <p>O Quiz!</p>
         </div>
-        <button type="submit" className="startButton">Começar</button>
+        <Link to="/quiz" className="startButton">Começar</Link>
       </div>
     </div>
   )

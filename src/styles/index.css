@@ -27,7 +27,7 @@ body {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  margin: 180px 0;
+  margin-top: 180px;
 
   width: 50%;
   height: 70vh;
@@ -43,6 +43,7 @@ body {
   background-repeat: no-repeat;
   width: 60%;
   height: 60%;
+  margin-bottom: 25px;
   
   display: flex;
   align-items: center;
@@ -54,6 +55,8 @@ body {
 }
 
 .startButton {
+  text-decoration: none;
+  color: #000;
   cursor: pointer;
   border: none;
   width: 144px;
@@ -61,5 +64,28 @@ body {
   font-size: 16px;
   background-color: #bbe47f;
   border-radius: 5px;
-  margin-top: 25px;
+  margin-right: 10px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.buttonOptions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10%;
+}
+
+.imageOptions {
+  height: 70%;
+}
+
+.currentStep {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20%;
 }
