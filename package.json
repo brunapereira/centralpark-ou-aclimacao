@@ -7,13 +7,13 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
+    "start": "yarn run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "jest --passWithNoTests",
     "test-watch": "jest --watch",
-    "ci-deploy": "npm run deploy -- --token $FIREBASE_TOKEN",
-    "deploy": "npm run build && firebase deploy --only hosting:centralpark-ou-aclimacao"
+    "ci-deploy": "yarn run deploy -- --token $FIREBASE_TOKEN",
+    "deploy": "yarn run build && firebase deploy --only hosting:centralpark-ou-aclimacao"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
@@ -31,7 +31,8 @@
     "react-dom": "^16.12.0",
     "react-firebase-hooks": "^2.2.0",
     "react-helmet": "^6.1.0",
-    "react-test-renderer": "^16.13.1"
+    "react-test-renderer": "^16.13.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "enzyme": "^3.11.0",

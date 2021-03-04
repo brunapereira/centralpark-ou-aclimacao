@@ -22,6 +22,9 @@ export default function Home() {
         ? <Result totalPoints={totalPoints}/>
         : <Options step={currentStep} increaseStep={increaseCurrentStep} increasePoints={increasePoints}/>}
       </div>
+      <footer>
+        Feito com &hearts; por <a href="https://github.com/brunapereira">Bruna Pereira</a>
+      </footer>
     </div>
   )
 }

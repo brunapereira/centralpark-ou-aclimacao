@@ -9,10 +9,13 @@ export default function Home() {
       <div id="main">
         <div className="title">
           <h2>Central Park <br/> ou Aclimação?</h2>
-          <p>O Quiz!</p>
+          <h4>O Quiz!</h4>
         </div>
         <Link to="/quiz" className="startButton">Começar</Link>
       </div>
+      <footer>
+        Feito com &hearts; por <a href="https://github.com/brunapereira">Bruna Pereira</a>
+      </footer>
     </div>
   )
 }
